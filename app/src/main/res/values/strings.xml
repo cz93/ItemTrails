@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ItemTrails</string>
+    <string name="title_activity_main">Neighbourhood</string>
+    <string name="action_share">Share</string>
+    <string name="action_upload">Upload</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_print">Print</string>
+</resources>
