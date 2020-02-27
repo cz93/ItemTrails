@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="colorGray">#747474</color>
-    <!-- Background color for app -->
-    <color name="tan_background">#FFF7DA</color>
+    <color name="colorSecondary">#B2DFDB</color>
+    <color name="colorSecondaryDark">#82ADA9</color>
+    <color name="colorSecondaryLight">#E5FFFF</color>
+    <color name="colorGray">#CCCCCC</color>
+    <color name="colorLightGray">#F5F5F5</color>
+    <color name="colorAccent">#4DB6AC</color>
 </resources>

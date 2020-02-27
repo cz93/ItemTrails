@@ -55,7 +55,7 @@
 
         <activity
             android:name=".EventsActivity"
-            android:label="Event"
+            android:label="Item"
             android:parentActivityName=".ItemsActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
