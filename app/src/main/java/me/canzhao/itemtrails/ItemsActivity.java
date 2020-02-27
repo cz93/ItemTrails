@@ -1,9 +1,6 @@
 package me.canzhao.itemtrails;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,13 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-
-import static android.app.PendingIntent.getActivity;
 
 public class ItemsActivity extends AppCompatActivity {
     
@@ -39,11 +33,14 @@ public class ItemsActivity extends AppCompatActivity {
          */
         ListView listView = findViewById(R.id.list);
 
-        ImageView itemImageView = (ImageView)
-                getLayoutInflater().inflate(R.layout.header_list_eventonitem, listView, false);
+        //ImageView itemImageView = (ImageView)
+        //getLayoutInflater().inflate(R.layout.header_list_eventonitem, listView, false);
+
+        ImageView itemImageView = findViewById(R.id.item_image);
 
         itemImageView.setImageResource(setImageResourceId());
-        listView.addHeaderView(itemImageView);
+        //itemImageView.setImageResource(R.drawable.ticket);
+        //listView.addHeaderView(itemImageView);
 
         /**
          * Create a list of item events
@@ -122,11 +119,12 @@ public class ItemsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                EventOnItem eventContainer = events.get(position);
-                Toast.makeText(adapter.getContext(), "selected name is " + eventContainer.toString(), Toast.LENGTH_SHORT).show();
-                
-                //Intent eventIntent = new Intent(eventContainer.getContext(), EventsActivity.class);
-                //startActivity(eventIntent);
+                //EventOnItem eventContainer = events.get(position);
+                //Toast.makeText(adapter.getContext(), "selected name is " + eventContainer.toString(), Toast.LENGTH_SHORT).show();
+                LinearLayout eventContainer = findViewById(R.id.event_container);
+
+                Intent eventIntent = new Intent(eventContainer.getContext(), EventsActivity.class);
+                startActivity(eventIntent);
 
             }
         });

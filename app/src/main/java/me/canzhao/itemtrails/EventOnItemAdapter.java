@@ -40,12 +40,12 @@ public class EventOnItemAdapter extends ArrayAdapter<EventOnItem> {
         }
 
         // Find the TextView in the event_on_item_list.xml_list.xml layout with the ID miwok_text_view.
-        TextView titleTextView = listItemView.findViewById(R.id.title_text_view);
+        TextView titleTextView = listItemView.findViewById(R.id.event_title);
         // Get the Miwok translation from the currentWord object and set this text on the Miwok TextView.
         titleTextView.setText(currentEvent.getEventTitle());
 
         // Find the TextView in the event_on_item_list.xml_list.xml layout with the ID miwok_text_view.
-        TextView descriptionTextView = listItemView.findViewById(R.id.description_text_view);
+        TextView descriptionTextView = listItemView.findViewById(R.id.event_description);
         // Get the Miwok translation from the currentWord object and set this text on the Miwok TextView.
         descriptionTextView.setText(currentEvent.getEventDescription());
 

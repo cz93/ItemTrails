@@ -7,10 +7,24 @@
     android:orientation="vertical"
     tools:context="me.canzhao.itemtrails.ItemsActivity">
 
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:padding="8dp"
+        android:text="Ticket to South Africa vs. Waikato, Rugby Park, Hamilton
+        (Accession Number: 1985/12/88), courtesy of the Waikato Museum Te Whare Taonga o Waikato."
+        android:textSize="12sp" />
+
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" />
 
 </LinearLayout>
