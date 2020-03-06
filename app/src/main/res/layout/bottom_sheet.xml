@@ -15,28 +15,14 @@
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="@android:color/white" />
 
-    <TextView
-        android:id="@+id/item_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="64dp"
-        android:padding="16dp"
-        android:gravity="center_vertical"
-        android:text="Rugby Game Ticket"
-        android:textAppearance="?android:textAppearanceMedium" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorSecondaryLight" />
 
-    <TextView
-        android:id="@+id/item_two"
+    <ListView
+        android:id="@+id/listv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="64dp"
-        android:padding="16dp"
-        android:gravity="center_vertical"
-        android:text="Anti Springbok Tour Drawing"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:layout_height="match_parent" />
+
 </LinearLayout>

@@ -9,22 +9,34 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.maps.model.LatLng;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class ItemsActivity extends AppCompatActivity {
-    
-    private int itemId;//to be integrated with other data
 
+
+    private ArrayList<ItemEvent> itemEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
 
-//        ImageView itemImageView = findViewById(R.id.item_image);
-//        itemImageView.setImageResource(setImageResourceId());
+        Intent intent = getIntent();
+        PoiItem pi = (PoiItem) intent.getSerializableExtra("data");
+
+        ImageView itemImage = findViewById(R.id.item_image);
+        itemImage.setImageResource(pi.getItemImageId());
+
+        TextView itemImageCap = findViewById(R.id.item_image_caption);
+        itemImageCap.setText(pi.getItemImageCap());
 
         /**
          * Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
@@ -33,70 +45,21 @@ public class ItemsActivity extends AppCompatActivity {
          */
         ListView listView = findViewById(R.id.list);
 
-        //ImageView itemImageView = (ImageView)
-        //getLayoutInflater().inflate(R.layout.header_list_eventonitem, listView, false);
-
-        ImageView itemImageView = findViewById(R.id.item_image);
-
-        itemImageView.setImageResource(setImageResourceId());
-        //itemImageView.setImageResource(R.drawable.ticket);
-        //listView.addHeaderView(itemImageView);
-
         /**
          * Create a list of item events
          */
-        final ArrayList<EventOnItem> events = new ArrayList<>();
 
-        events.add(new EventOnItem(R.drawable.ic_first_footprints, "Event 1 of Item 1",
-                "This is a secondary text that takes up more than one line."));
-        events.add(new EventOnItem(R.drawable.ic_footprints, "Event 2 of Item 1",
-                "This is a secondary text that takes up more than one line."));
-        events.add(new EventOnItem(R.drawable.ic_footprints, "Event 3 of Item 1",
-                "This is a secondary text that takes up more than one line."));
-        events.add(new EventOnItem(R.drawable.ic_footprints, "Event 4 of Item 1",
-                "This is a secondary text that takes up more than one line."));
-        events.add(new EventOnItem(R.drawable.ic_last_footprints, "Event 5 of Item 1",
-                "This is a secondary text that takes up more than one line."));
-//        events.add(new EventOnItem(R.drawable.number_one, R.string.one_on_two_title,
-//                R.string.one_on_two_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.two_on_two_title,
-//                R.string.two_on_two_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.three_on_two_title,
-//                R.string.three_on_two_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.four_on_two_title,
-//                R.string.four_on_two_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.five_on_two_title,
-//                R.string.five_on_two_description));
-//        events.add(new EventOnItem(R.drawable.number_one, R.string.one_on_three_title,
-//                R.string.one_on_three_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.two_on_three_title,
-//                R.string.two_on_three_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.three_on_three_title,
-//                R.string.three_on_three_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.four_on_three_title,
-//                R.string.four_on_three_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.five_on_three_title,
-//                R.string.five_on_three_description));
-//        events.add(new EventOnItem(R.drawable.number_one, R.string.one_on_four_title,
-//                R.string.one_on_four_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.two_on_four_title,
-//                R.string.two_on_four_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.three_on_four_title,
-//                R.string.three_on_four_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.four_on_four_title,
-//                R.string.four_on_four_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.five_on_four_title,
-//                R.string.five_on_four_description));
-//        events.add(new EventOnItem(R.drawable.number_one, R.string.one_on_five_title,
-//                R.string.one_on_five_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.two_on_five_title,
-//                R.string.two_on_five_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.three_on_five_title,
-//                R.string.three_on_five_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.four_on_five_title,
-//                R.string.four_on_five_description));
-//        events.add(new EventOnItem(R.drawable.number_two, R.string.five_on_five_title,
-//                R.string.five_on_five_description));
+        itemEvents = pi.getItemEvent();
+        ArrayList<EventOnDemand> eod = new ArrayList<>();
+        for(int i=0; i<itemEvents.size(); i++){
+            if(i == 0){
+                eod.add(new EventOnDemand(R.drawable.ic_first_footprints,itemEvents.get(i).getEventName(),itemEvents.get(i).getEventDesSnippet()));
+            }else if(i == itemEvents.size()-1){
+                eod.add(new EventOnDemand(R.drawable.ic_last_footprints,itemEvents.get(i).getEventName(),itemEvents.get(i).getEventDesSnippet()));
+            }else{
+                eod.add(new EventOnDemand(R.drawable.ic_footprints,itemEvents.get(i).getEventName(),itemEvents.get(i).getEventDesSnippet()));
+            }
+        }
 
         /**
          * Create an {@link ArrayAdapter}, whose data source is a list of Strings.
@@ -105,7 +68,7 @@ public class ItemsActivity extends AppCompatActivity {
          * This list item layout contains a single {@link TextView},
          * which the adapter will set to display a single word.
          */
-        final EventOnItemAdapter adapter = new EventOnItemAdapter(this, events);
+        final EventOnDemandAdapter adapter = new EventOnDemandAdapter(this, eod);
 
         /**
          * Make the {@link ListView} use the {@link ArrayAdapter} we created above,
@@ -124,27 +87,13 @@ public class ItemsActivity extends AppCompatActivity {
                 LinearLayout eventContainer = findViewById(R.id.event_container);
 
                 Intent eventIntent = new Intent(eventContainer.getContext(), EventsActivity.class);
+                eventIntent.putExtra("position", position);
+                eventIntent.putExtra("events", itemEvents);
                 startActivity(eventIntent);
-
             }
         });
     }
 
-    
-    private int setImageResourceId() {
 
-        int imageResourceId = 0;
 
-        for(itemId = 0; itemId < 5; itemId++) {
-
-            if (itemId == 0) { imageResourceId = R.drawable.ladle; }
-            else if (itemId == 1) { imageResourceId = R.drawable.ladle; }
-            else if (itemId == 2) { imageResourceId = R.drawable.ladle; }
-            else if (itemId == 3) { imageResourceId = R.drawable.ladle; }
-            else { imageResourceId = R.drawable.ticket; }
-
-        }
-        
-        return imageResourceId;
-    }
 }

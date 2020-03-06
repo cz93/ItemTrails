@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/event_title"
+            android:id="@+id/event_name"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="left"
@@ -27,7 +27,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/event_description"
+            android:id="@+id/event_des_snippet"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="top"

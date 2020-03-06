@@ -9,6 +9,12 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -62,6 +69,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ItemsActivity"/>
         </activity>
+
+        <receiver android:name=".GeofenceIntentService"/>
 
     </application>
 
